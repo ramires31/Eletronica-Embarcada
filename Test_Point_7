@@ -1,0 +1,46 @@
+# ⚙️ Test Point – Controle com CCP, Comparador Analógico e PWM
+
+## 📖 Descrição
+
+Este projeto integra o uso dos módulos **CCP**, **PWM** e **Comparador Analógico** para controle e monitoramento de sinais, utilizando um LDR e um motor com sensor óptico.
+
+---
+
+## 🛠️ Especificações Técnicas
+
+### 1) Geração de Sinal Quadrado com CCP1
+
+* Modo **Comparação** do CCP1 configurado para gerar um sinal quadrado com **período ≈ 262 ms** no pino **RB3 (CS)**.
+* O gerador é habilitado somente quando o valor analógico do **LDR** for **maior que um valor de referência** (ex.: 2V, definido experimentalmente).
+* Para valores abaixo do limite, a geração do sinal é desabilitada.
+* Um **comparador analógico** é utilizado para detectar se o valor do LDR está acima ou abaixo do limite.
+* A desativação do gerador é feita parando a contagem do **TMR1** utilizando o sinal de saída do comparador analógico (**SYNCCxOUT**).
+
+### 2) Controle e Medição de Velocidade do Motor
+
+* Um módulo **CCP** no modo **PWM** de 10 bits com frequência próxima de **2 kHz** energiza o motor.
+* A velocidade do motor é controlada pelo valor lido do **LDR**.
+* Um segundo módulo **CCP** no modo **Captura** é utilizado para medir a velocidade do motor em **RPM**.
+* O sensor óptico (**encoder**, sinal ENC) envia **4 pulsos por volta**.
+* Faixa de medição: **60 a 6000 RPM**.
+* O pino de entrada do sensor é configurado como **entrada digital** com **pull-up interno ativado**.
+* O valor capturado pelo CCP é convertido para **unidades de engenharia** e armazenado em uma variável acessível na função `main`.
+
+---
+
+## 🧪 Testes e Validação
+
+* Firmware desenvolvido, simulado e testado no **Laboratório Remoto**.
+* Sinais visualizados e medidos com **Analisador Lógico**.
+
+---
+
+## 🖥️ Ferramentas Utilizadas
+
+* **Microcontrolador PIC**
+* **MPLAB X IDE**
+* **Linguagem C**
+* **Módulos CCP (Comparação, PWM, Captura)**
+* **Comparador Analógico**
+* **TMR1**
+* **Analisador Lógico**
