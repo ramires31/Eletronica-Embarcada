@@ -1,0 +1,50 @@
+# ⚙️ Test Point – Controle de Motor com PWM, LDR e Encoder
+
+## 📖 Descrição
+
+Este projeto utiliza um motor de corrente contínua acionado por um transistor (**Q1**), controlado por um sinal **PWM** de 10 bits com frequência superior a **2 kHz**. Um **LDR** conectado a uma entrada analógica do microcontrolador permite ajustar a velocidade do motor de acordo com a luminosidade medida.
+
+---
+
+## 🛠️ Especificações Técnicas
+
+### Controle de Velocidade com LDR
+
+* Leitura analógica do **LDR** para definir a velocidade do motor.
+* Em condições de baixa luminosidade, o valor medido pode ser escalonado para alcançar o ciclo útil máximo do PWM.
+* Alterações na velocidade seguem uma **rampa de aceleração/desaceleração** de **2 unidades de ciclo útil (dc) a cada 1 ms**.
+* Gerenciamento da rampa feito por **interrupção de temporizador**.
+
+### PWM do Motor
+
+* Frequência > **2 kHz**.
+* Resolução de **10 bits**.
+* PWM controla o transistor **Q1** que aciona o motor.
+
+### Medição de Velocidade com Encoder
+
+* Encoder óptico (**sinal ENC**) acoplado ao eixo do motor.
+* Envia **4 pulsos por volta**.
+* Medição configurada com pino de entrada digital e **pull-up interno ativado**.
+* Utilização de módulo **CCP** no modo captura para medir o tempo entre pulsos.
+* Conversão do valor capturado para **RPM** e armazenamento em variável acessível na `main`.
+
+---
+
+## 🧪 Testes e Validação
+
+* Firmware desenvolvido e testado no **Laboratório Remoto**.
+* Sinais do PWM e do encoder visualizados e medidos com **Analisador Lógico**.
+* Observação das variações na velocidade do motor conforme alterações na iluminação e na rampa de aceleração.
+
+---
+
+## 🖥️ Ferramentas Utilizadas
+
+* **Microcontrolador PIC**
+* **MPLAB X IDE**
+* **Linguagem C**
+* **Módulo CCP (PWM e Captura)**
+* **ADC**
+* **Temporizador com Interrupção**
+* **Analisador Lógico**
