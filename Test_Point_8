@@ -1,0 +1,60 @@
+# 📡 Test Point 7 – Sistema de Aquisição e Controle
+
+## 📖 Descrição
+
+Este projeto consiste no desenvolvimento de um sistema de aquisição de dados e controle capaz de:
+
+* Medir o nível de iluminação do local (**0–100%** do total).
+* Medir a velocidade de um motor.
+* Medir a temperatura (**0–100°C**).
+
+---
+
+## 🛠️ Especificações Técnicas
+
+### Sensores e Conversão
+
+* Sinais analógicos provenientes de sensores.
+* Conversão para digital via **ADC**.
+* Valores convertidos para **unidades de engenharia**.
+* Ajuste da resolução considerando diferentes tensões de referência.
+
+### Envio de Dados
+
+* Medições enviadas a cada **1 segundo** quando o envio está ativo.
+* Comunicação serial assíncrona **UART/USB** a **19200 BPS**.
+* Formato de envio: **ponto fixo** com **1 casa decimal**.
+
+### Controle do Motor
+
+* Controle via **PWM** de 10 bits.
+* Intervalo: **0 a 1023**.
+* Frequência: **7,8 kHz**.
+* Comando específico para definir o valor do PWM.
+
+### Ganho de Conversão
+
+* Ajustável via comando separado.
+* Intervalo: **0,000 a 16,383**.
+* Usado para converter valores do ADC para unidades de engenharia.
+* Enviado como ponto fixo com **3 casas decimais**.
+
+---
+
+## 📋 Funcionalidades Resumidas
+
+* 📏 Medição de iluminação, velocidade e temperatura.
+* 🔄 Envio periódico de medições via UART/USB.
+* ⚙️ Controle de velocidade do motor via PWM.
+* 📊 Ajuste de ganho para conversão.
+* 💾 Formato de envio otimizado para precisão.
+
+---
+
+## 🖥️ Ferramentas Utilizadas
+
+* **Microcontrolador PIC**
+* **MPLAB X IDE**
+* **Linguagem C**
+* **Módulos ADC e PWM**
+* **Comunicação UART/USB**
