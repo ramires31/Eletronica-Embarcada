@@ -1,0 +1,51 @@
+# ⚙️ Test Point – Controle de LED com Comparador Analógico, Interrupção e ADC com Histerese
+
+## 📖 Descrição
+
+Este projeto implementa três formas de controle de um LED utilizando comparador analógico, interrupções e conversor analógico-digital (ADC) com histerese, explorando o uso do gerador de tensão de referência fixa (FVR) e um divisor resistivo com LDR.
+
+---
+
+## 🛠️ Casos de Implementação
+
+### 1️⃣ Controle Direto pelo Comparador Analógico
+
+* Configuração do comparador analógico para comparar:
+
+  * Entrada positiva: tensão de referência fixa (FVR).
+  * Entrada negativa: tensão proveniente do divisor LDR + resistor.
+* A saída do comparador muda diretamente o estado do LED.
+
+### 2️⃣ Controle por Interrupção do Comparador
+
+* Configuração do comparador analógico como no caso anterior.
+* Ativação da **interrupção do comparador** para detecção de mudança de estado.
+* O firmware altera o estado do LED na rotina de interrupção.
+
+### 3️⃣ Controle por ADC com Histerese
+
+* Utilização do conversor **ADC** para ler a tensão do divisor LDR + resistor.
+* Definição de **limites mínimo e máximo** de iluminação como constantes no firmware.
+* Implementação de **histerese** para evitar oscilações rápidas na comutação.
+* Atuação sobre a saída **RA3** para mudar o estado do LED.
+* O FVR gera a tensão de referência positiva para o ADC.
+
+---
+
+## 📋 Funcionalidades Resumidas
+
+* Controle de LED com hardware (comparador) e firmware (interrupção e ADC).
+* Uso de FVR para garantir estabilidade da referência.
+* Implementação de histerese para maior confiabilidade na comutação.
+
+---
+
+## 🖥️ Ferramentas Utilizadas
+
+* **Microcontrolador PIC**
+* **MPLAB X IDE**
+* **Linguagem C**
+* **Comparador Analógico**
+* **ADC com Histerese**
+* **Gerador de Tensão de Referência Fixa (FVR)**
+* **Interrupções**
