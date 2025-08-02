@@ -1,0 +1,34 @@
+# 📅 Sistema de Agendamento com Comunicação Serial
+
+## 📖 Descrição do Projeto
+Este sistema de agendamento foi desenvolvido para gerenciar **até 10 clientes** utilizando comunicação **serial assíncrona** via **UART/USB** a **57600 BPS** no formato **ASCII**.  
+O sistema permite agendar clientes, visualizar a lista de agendamentos, identificar o próximo cliente e apagar a lista.
+
+---
+
+## ⚙️ Funcionalidades
+- **Agendar cliente**  
+  - O cliente é adicionado ao final da lista e marcado como **"agendado"**.
+- **Visualizar lista de agendamentos**  
+  - Exibe somente clientes agendados ou atendidos.
+- **Mostrar próximo cliente**  
+  - Exibe o nome do cliente que será atendido em seguida.
+- **Apagar lista**  
+  - Limpa todos os registros de clientes.
+
+---
+
+## 🗄️ Armazenamento de Dados
+- Os dados dos clientes **não são perdidos em caso de falta de energia**, pois são armazenados na **EEPROM**.
+- Informações armazenadas:
+  - **Nome do cliente** (máximo 20 caracteres).
+  - **Estado do atendimento**:
+    - `vazio`
+    - `agendado`
+    - `atendido`
+- Estrutura em **C** utilizada para organizar os dados:
+  ```c
+  typedef struct {
+      char nome[21];
+      uint8_t estado; // 0 = vazio, 1 = agendado, 2 = atendido
+  } Cliente;
